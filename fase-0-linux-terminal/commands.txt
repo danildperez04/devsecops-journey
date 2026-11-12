@@ -1,0 +1,54 @@
+uname -r # Kernel
+cat /etc/os-release # OS Info
+
+free -h # RAM
+lscpu | grep -E "Model name|^CPU\(s\)|Thread|Core" # CPU
+grep -Ec "vmx|svm" /proc/cpuinfo # CPU Threads
+lsblk -d -o NAME,SIZE,ROTA,MODEL # Disks
+
+pwd
+cd /
+ls | head -20
+cat os-release
+
+cd ~ # Change Directory
+mkdir practica # Make Directory
+touch docs/notas.txt # Create a file
+echo "Mi primera nota en Linux" > docs/notas.txt # Override
+echo "Segunda linea" >> docs/notas.txt # Append
+
+cp docs/notas.txt scripts/ # Copy
+mv scripts/notas.txt scripts/backup.txt # Move or Rename
+rm scripts/backup.txt # Remove
+
+find /etc -name "*.conf" 2>/dev/null | head -10
+find /etc -name "*.conf" 2>/dev/null | wc -l
+
+chmod 755 script.sh # Change permissions (numeric)
+chmod u+x script.sh # Add Execution to owner
+chmod o-r secreto.txt # Remove Read to Others
+sudo chown ana archivo # Change owner
+sudo chown ana:devs archivo # Change owner and group
+
+whoami
+id # My user, my groups and numbers
+groups # My groups
+
+ps aux                  # Todos los procesos
+ps aux | grep firefox   # Buscar uno
+top                     # En vivo (q para salir)
+pstree -p | head -20    # Árbol de procesos
+
+kill 1234       # Pide al proceso 1234 que termine (SIGTERM, educado)
+kill -9 1234    # Lo mata sin preguntar (SIGKILL, último recurso)
+pkill firefox   # Por nombre
+
+systemctl status sshd           # Estado
+sudo systemctl start sshd       # Iniciar
+sudo systemctl stop sshd        # Detener
+sudo systemctl enable sshd      # Arrancar al encender
+systemctl list-units --type=service --state=running
+
+journalctl -u sshd          # Logs de un servicio
+journalctl -f               # En vivo (Ctrl+C para salir)
+journalctl -p err -b        # Solo errores desde el último arranque

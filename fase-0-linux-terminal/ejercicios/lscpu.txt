@@ -1,0 +1,5 @@
+CPU(s):                                  8
+Model name:                              AMD Ryzen 7 PRO 3700U w/ Radeon Vega Mobile Gfx
+Thread(s) per core:                      2
+Core(s) per socket:                      4
+CPU(s) scaling MHz:                      57%
